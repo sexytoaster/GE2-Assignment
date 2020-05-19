@@ -9,6 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1261f845bd0d48d4e8b5f332cac525fc, type: 3}
-  m_Name: Cohesion
+  m_Script: {fileID: 11500000, guid: ab968124de2ebb34f8f0e84aefeb0085, type: 3}
+  m_Name: stayInRaduis15
   m_EditorClassIdentifier: 
+  centre: {x: 1081.7632, y: -4.800747, z: 3901.8145}
+  radius: 100

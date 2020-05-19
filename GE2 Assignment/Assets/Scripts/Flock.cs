@@ -41,7 +41,7 @@ public class Flock : MonoBehaviour
 
         for(int i = 0; i < startingCount; i++)
         {
-            FlockAgent newAgent = Instantiate(agentPrefab, new Vector3(transform.position.x + Random.Range(-spawnRadius, spawnRadius), transform.position.y, transform.position.z + Random.Range(-spawnRadius, spawnRadius)), Quaternion.Euler(Vector3.forward), transform);
+            FlockAgent newAgent = Instantiate(agentPrefab, new Vector3(transform.position.x + Random.Range(-spawnRadius, spawnRadius), transform.position.y, transform.position.z + Random.Range(-spawnRadius, spawnRadius)), Quaternion.Euler(transform.rotation.eulerAngles), transform);
             newAgent.name = "Agent " + i;
             agents.Add(newAgent);
         }
