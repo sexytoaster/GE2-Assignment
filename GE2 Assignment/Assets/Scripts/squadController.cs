@@ -6,13 +6,28 @@ using UnityEngine;
 class FindTargetState : State
 {
     Vector3 targetPos;
-
+    GameObject[] enemyShips;
+    GameObject target;
     public override void Enter()
     {
-        GameObject[] enemyShips = GameObject.FindGameObjectsWithTag("redTeam");
-
-        GameObject target = enemyShips[Random.Range(0, enemyShips.Length)];
-
+        switch (owner.tag)
+        {
+            case "BomberLeaderBlue":
+                enemyShips = GameObject.FindGameObjectsWithTag("redTeam");
+                target = enemyShips[Random.Range(0, enemyShips.Length)];
+                break;
+            case "BomberLeaderRed":
+                enemyShips = GameObject.FindGameObjectsWithTag("blueTeam");
+                target = enemyShips[Random.Range(0, enemyShips.Length)];
+                break;
+            case "FighterLeaderBlue":
+                target = GameObject.FindGameObjectWithTag("FighterLeaderRed");
+                break;
+            case "FighterLeaderRed":
+                target = GameObject.FindGameObjectWithTag("FighterLeaderBlue");
+                break;
+        }
+        
         owner.GetComponent<Arrive>().targetGameObject = target;
         owner.GetComponent<Arrive>().enabled = true;
         owner.GetComponent<squadController>().targetEnemy = target;
@@ -22,7 +37,7 @@ class FindTargetState : State
     {
         if (Vector3.Distance(
             owner.GetComponent<squadController>().targetEnemy.transform.position,
-            owner.transform.position) < 100)
+            owner.transform.position) < 50)
         {
             owner.ChangeState(new AttackState());
         }

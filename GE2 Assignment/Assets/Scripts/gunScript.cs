@@ -6,8 +6,8 @@ public class gunScript : MonoBehaviour
 {
 
     public GameObject bullet;
-    public float speed = 2000;
-    public float shotsPerMin = 10;
+    public float speed;
+    public float shotsPerMin;
     public float lastShot;
     // Start is called before the first frame update
     void Start()

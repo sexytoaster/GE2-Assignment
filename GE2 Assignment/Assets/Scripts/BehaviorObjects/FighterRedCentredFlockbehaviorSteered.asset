@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 52fe8b9b09049e647b1a0d0015b47f10, type: 3}
-  m_Name: FighterBlueCentredFlockbehaviorSteered
+  m_Name: FighterRedCentredFlockbehaviorSteered
   m_EditorClassIdentifier: 
   behaviors:
   - {fileID: 11400000, guid: 389dd520c6922d34c99ee3e2a193f995, type: 2}
   - {fileID: 11400000, guid: 532cbb50ae0cd9e4298c65244cdeaa24, type: 2}
   - {fileID: 11400000, guid: e00ef89367838524fb1e3546716b7dc1, type: 2}
-  - {fileID: 11400000, guid: fb4a315cc80cc484595d51dbdee33e3c, type: 2}
+  - {fileID: 11400000, guid: 63d3cce49eb7db34f9a3226ceaa0b34b, type: 2}
   weights:
   - 0
   - 1

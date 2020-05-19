@@ -8,6 +8,9 @@ TagManager:
   - blueTeam
   - Leader
   - BomberLeaderBlue
+  - FighterLeaderBlue
+  - BomberLeaderRed
+  - FighterLeaderRed
   layers:
   - Default
   - TransparentFX
