@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c69a82ba45bd16d45b6062611e267ae1, type: 3}
   m_Name: StayInRadiusBehaviorFighterBlue
   m_EditorClassIdentifier: 
-  centre: {x: 0, y: 0, z: 0}
-  radius: 100
+  centre: {x: 346.73315, y: 12.23586, z: 3883.629}
+  radius: 200

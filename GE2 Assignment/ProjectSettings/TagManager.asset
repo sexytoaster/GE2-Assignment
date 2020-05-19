@@ -11,6 +11,8 @@ TagManager:
   - FighterLeaderBlue
   - BomberLeaderRed
   - FighterLeaderRed
+  - blueTeamShip
+  - redTeamShip
   layers:
   - Default
   - TransparentFX

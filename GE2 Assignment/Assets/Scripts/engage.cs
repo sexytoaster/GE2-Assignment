@@ -4,16 +4,46 @@ using UnityEngine;
 
 public class engage : MonoBehaviour
 {
-    public bool engageEnemy = true;
-    private void OnCollisionEnter(Collision collision)
+    public gunScript[] gunScripts;
+    public GameObject leader;
+    public Arrive leaderArrive;
+    private bool alreadyRan = false;
+
+    void Start()
     {
-        if(this.tag == "blueTeam" && collision.transform.tag == "redTeam")
+        leaderArrive = leader.GetComponent<Arrive>();
+        
+    }
+
+    void Update()
+    {
+        if(leaderArrive.enabled == false)
         {
-            engageEnemy = true;
+            engageEnemy();
         }
-        if (this.tag == "redTeam" && collision.transform.tag == "blueTeam")
+        if (leaderArrive.enabled == true && alreadyRan == false)
         {
-            engageEnemy = true;
+            disengageEnemy();
         }
     }
+
+    private void engageEnemy()
+    {
+        gunScripts = GetComponentsInChildren<gunScript>();
+        foreach (gunScript gun in gunScripts)
+        {
+            gun.enabled = true;
+            alreadyRan = false;
+        }
+    }
+    private void disengageEnemy()
+    {
+        gunScripts = GetComponentsInChildren<gunScript>();
+        foreach (gunScript gun in gunScripts)
+        {
+            gun.enabled = false;
+        }
+        alreadyRan = true;
+    }
+
 }

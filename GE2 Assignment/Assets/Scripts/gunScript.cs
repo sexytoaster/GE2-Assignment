@@ -6,13 +6,15 @@ public class gunScript : MonoBehaviour
 {
 
     public GameObject bullet;
+    private Rigidbody rb;
     public float speed;
     public float shotsPerMin;
     public float lastShot;
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
         lastShot = Time.time;
+        lastShot -= (Random.Range(0, 60 / shotsPerMin));
     }
 
     // Update is called once per frame
@@ -22,7 +24,9 @@ public class gunScript : MonoBehaviour
         {
             GameObject instantiatedBullet = Instantiate(bullet, transform.position, transform.rotation);
 
-            instantiatedBullet.GetComponent<Rigidbody>().velocity += new Vector3(-speed, 0, 0);
+            rb = instantiatedBullet.GetComponent<Rigidbody>();
+            rb.AddRelativeForce(Vector3.forward * speed);
+            //+= new Vector3(-speed, 0, 0);
             lastShot = Time.time;
         }
         
