@@ -6,6 +6,8 @@ TagManager:
   tags:
   - redTeam
   - blueTeam
+  - Leader
+  - BomberLeaderBlue
   layers:
   - Default
   - TransparentFX

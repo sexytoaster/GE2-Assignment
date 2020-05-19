@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ab968124de2ebb34f8f0e84aefeb0085, type: 3}
-  m_Name: stayInRaduis15
+  m_Name: stayInRaduisBomberBlue
   m_EditorClassIdentifier: 
-  centre: {x: 1081.7632, y: -4.800747, z: 3901.8145}
+  centre: {x: 1337.4175, y: 0.82718563, z: 4080.9827}
   radius: 100

@@ -3,8 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Flock/Behavior/StayInRadius")]
-public class StayInRadiusBehavior : FlockBehaviour
+[CreateAssetMenu(menuName = "Flock/Behavior/StayInRadiusBomberBlue")]
+public class StayInRadiusBehaviorBomberBlue : FlockBehaviour
 {
     
     public Vector3 centre;
