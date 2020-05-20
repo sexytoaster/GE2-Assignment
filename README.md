@@ -18,11 +18,10 @@ needed.
 ## Aims
 
 - [x] Find assets
-- [ ] Steering behaviors on all ships in the scene, bar ships in place for backdrop effect
-- [ ] Fighter wings engaging big ships in formation
-- [ ] Object Avoidance
+- [x] Steering behaviors on all ships in the scene, bar ships in place for backdrop effect
+- [x] Fighter wings engaging big ships in formation
+- [x] Object Avoidance
 - [ ] Ships falling to earth after being destroyed
-- [ ] Ships engaging eachother
-- [ ] Ships exploding after taking enough damage
+- [x] Ships engaging eachother
+- [x] Ships exploding after taking enough damage
 - [ ] Orbital Defence Platforms engaing enemy ships
-- [ ] Covenant battleship being destroyed at the end, like in the game
