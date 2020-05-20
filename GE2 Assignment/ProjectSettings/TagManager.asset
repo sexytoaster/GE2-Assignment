@@ -13,6 +13,8 @@ TagManager:
   - FighterLeaderRed
   - blueTeamShip
   - redTeamShip
+  - smallLaser
+  - bigLaser
   layers:
   - Default
   - TransparentFX

@@ -93,6 +93,8 @@ public class shipController : MonoBehaviour
     public float maxHP;
     private float currentHP;
     public float hpPercent;
+    public float bigLaserDamage = 5;
+    public float smallLaserDamage = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -110,5 +112,17 @@ public class shipController : MonoBehaviour
             GetComponent<StateMachine>().ChangeState(new TargetState());
         }
     }
-    
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "smallLaser")
+        {
+            currentHP -= smallLaserDamage;
+        }
+        if (collision.gameObject.tag == "bigLaser")
+        {
+            currentHP -= bigLaserDamage;
+        }
+    }
+
 }
