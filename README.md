@@ -25,3 +25,8 @@ needed.
 - [x] Ships engaging eachother
 - [x] Ships exploding after taking enough damage
 - [ ] Orbital Defence Platforms engaing enemy ships
+
+## Final Result
+
+In the end, most of what I aimed for was implemented and more. I went outside the coursework and implemented flocking behaviors for the fighters and bombers. I also implemented steering behaviors on all of the ships, gun turrets with firing arcs and also finite state machines on the bigger ships, and the leaders of the fighter and bomber squadrons. I also implemented a camera script that swapped between specific cameras as the story unfolded, and was not specifically timed but triggered by the events unfolding naturally in the scene. I would have liked to implement one more state, for retreating but unfortunately I did not get around to this as the camera and the audio consumed more time than I expected.
+
