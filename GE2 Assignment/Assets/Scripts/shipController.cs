@@ -59,44 +59,8 @@ class PursueState : State
         owner.GetComponent<OffsetPursue>().enabled = true;
         owner.GetComponent<OffsetPursue>().targetShip = owner.GetComponent<shipController>().targetEnemy.GetComponent<Boid>();
     }
-
-    public override void Think()
-    {
-        if (owner.GetComponent<shipController>().hpPercent <= 20)
-        {
-            owner.ChangeState(new FleeState());
-        }
-    }
-    public override void Exit()
-    {
-        owner.GetComponent<OffsetPursue>().enabled = false;
-    }
 }
 
-class FleeState : State
-{
-    private float time;
-    public override void Enter()
-    {
-        owner.GetComponent<Arrive>().targetGameObject = owner.transform.parent.gameObject;
-        owner.GetComponent<squadController>().targetEnemy = owner.transform.parent.gameObject;
-        owner.GetComponent<Boid>().maxSpeed = owner.GetComponent<squadController>().tempSpeed;
-        owner.GetComponent<Arrive>().enabled = true;
-    }
-    public override void Think()
-    {
-        if (Vector3.Distance(
-            owner.GetComponent<squadController>().targetEnemy.transform.position,
-            owner.transform.position) < 20)
-        {
-            owner.ChangeState(new FindTargetState());
-        }
-    }
-    public override void Exit()
-    {
-        owner.GetComponent<Arrive>().enabled = true;
-    }
-}
 
 public class shipController : MonoBehaviour
 {

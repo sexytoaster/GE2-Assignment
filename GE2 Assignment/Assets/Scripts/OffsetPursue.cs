@@ -14,19 +14,26 @@ public class OffsetPursue : SteeringBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        offset = transform.position - targetShip.transform.position;
+        if(targetShip != null)
+        {
+            offset = transform.position - targetShip.transform.position;
 
-        offset = Quaternion.Inverse(targetShip.transform.rotation) * offset;
+            offset = Quaternion.Inverse(targetShip.transform.rotation) * offset;
+        }
+        
     }
 
     public override Vector3 Calculate()
     {
-        worldTarget = targetShip.transform.TransformPoint(offset);
-        float dist = Vector3.Distance(worldTarget, transform.position);
-        float time = dist / boid.maxSpeed;
-        targetPos = worldTarget + (targetShip.velocity * time);
-        force = boid.ArriveForce(targetPos);
+        if(targetShip!=null)
+        {
+            worldTarget = targetShip.transform.TransformPoint(offset);
+            float dist = Vector3.Distance(worldTarget, transform.position);
+            float time = dist / boid.maxSpeed;
+            targetPos = worldTarget + (targetShip.velocity * time);
+            force = boid.ArriveForce(targetPos);
+            
+        }
         return force;
-
     }
 }
