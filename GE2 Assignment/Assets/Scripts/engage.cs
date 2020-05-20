@@ -5,6 +5,8 @@ using UnityEngine;
 public class engage : MonoBehaviour
 {
     public gunScript[] gunScripts;
+    public bombScript[] bombScripts;
+
     public GameObject leader;
     public Arrive leaderArrive;
     private bool alreadyRan = false;
@@ -29,19 +31,32 @@ public class engage : MonoBehaviour
 
     private void engageEnemy()
     {
+        bombScripts = GetComponentsInChildren<bombScript>();
         gunScripts = GetComponentsInChildren<gunScript>();
         foreach (gunScript gun in gunScripts)
         {
             gun.enabled = true;
-            alreadyRan = false;
+            
         }
+        foreach (bombScript bomb in bombScripts)
+        {
+            bomb.enabled = true;
+            
+        }
+        alreadyRan = false;
     }
     private void disengageEnemy()
     {
+        bombScripts = GetComponentsInChildren<bombScript>();
         gunScripts = GetComponentsInChildren<gunScript>();
         foreach (gunScript gun in gunScripts)
         {
             gun.enabled = false;
+        }
+        foreach (bombScript bomb in bombScripts)
+        {
+            bomb.enabled = false;
+
         }
         alreadyRan = true;
     }

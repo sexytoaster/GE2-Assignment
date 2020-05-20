@@ -16,4 +16,10 @@ public class DestroyLasers : MonoBehaviour
         Destroy(this.gameObject, delay);
         yield return null;
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Destroy(this.gameObject);
+        Debug.Log("CollisionDestroy");
+    }
 }
