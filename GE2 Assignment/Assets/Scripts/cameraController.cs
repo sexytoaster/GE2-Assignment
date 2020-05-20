@@ -11,6 +11,7 @@ public class cameraController : MonoBehaviour
     public Camera camera4;
     public Camera camera5;
     public Camera camera6;
+    public Camera camera7;
 
     public SmoothCamera camera1Smooth;
 
@@ -48,6 +49,8 @@ public class cameraController : MonoBehaviour
     private bool bombersEngagedDone = false;
     private bool midnightDone = false;
     private bool starmadeDone = false;
+
+    private bool panningCam = false;
 
     private bool bomberEngaged = false;
     private bool widePan = false;
@@ -97,13 +100,9 @@ public class cameraController : MonoBehaviour
             bomberEngaged = true;
             GetComponent<AudioSource>().PlayOneShot(bombersEngageAudio);
         }
-        if (bomberArrived.enabled == true && bomberEngaged == true && midnightDone == false && starmadeDone == false)
+        if (bomberArrived.enabled == true && bomberEngaged == true && midnightDone == false && starmadeDone == false && panningCam == false)
         {
-            camera1.enabled = false;
-            camera2.enabled = false;
-            camera3.enabled = false;
-            camera4.enabled = true;
-            Debug.Log("pan");
+            StartCoroutine("Panning");
         }
         if( midnight != null && midnightShip.hpPercent <= 20 && midnightDone == false)
         {
@@ -115,18 +114,14 @@ public class cameraController : MonoBehaviour
             StartCoroutine("starmadeCamera");
             
         }
-        if ((midnight == null && starmadeShip.hpPercent > 20) || (starmade == null && midnightShip.hpPercent > 20))
+        if (((midnight == null && starmadeShip.hpPercent > 20) || (starmade == null && midnightShip.hpPercent > 20)) && panningCam == false)
         {
-            camera1.enabled = false;
-            camera2.enabled = false;
-            camera3.enabled = false;
-            camera4.enabled = true;
+            StartCoroutine("Panning");
             Debug.Log("sidepan");
         }
 
-        if (midnight == null && starmade == null)
+        if (midnight == null && starmade == null && retreat == false)
         {
-            
             StartCoroutine("OrderRetreat");
         }
 
@@ -161,12 +156,47 @@ public class cameraController : MonoBehaviour
         camera3.enabled = false;
         camera4.enabled = false;
         camera5.enabled = true;
-
+        camera6.enabled = false;
+        camera7.enabled = false;
 
 
         yield return new WaitForSeconds(7);
         introStarted = true;
         Debug.Log("Introcam");
+    }
+    IEnumerator Panning()
+    {
+        panningCam = true;
+        camera1.enabled = false;
+        camera2.enabled = false;
+        camera3.enabled = false;
+        camera5.enabled = false;
+
+        int pickCam = Random.Range(0, 2);
+
+        switch (pickCam)
+        {
+            case 0:
+                camera4.enabled = true;
+                camera6.enabled = false;
+                camera7.enabled = false;
+                break;
+            case 1:
+                camera4.enabled = false;
+                camera6.enabled = true;
+                camera7.enabled = false;
+                break;
+            case 2:
+                camera4.enabled = false;
+                camera6.enabled = false;
+                camera7.enabled = true;
+                break;
+        }
+
+
+        yield return new WaitForSeconds(7);
+        panningCam = false;
+        Debug.Log("panning");
     }
     IEnumerator introFighterCamera()
     {
@@ -203,6 +233,10 @@ public class cameraController : MonoBehaviour
         camera1.enabled = false;
         camera2.enabled = false;
         camera3.enabled = true;
+        camera4.enabled = false;
+        camera5.enabled = false;
+        camera6.enabled = false;
+        camera7.enabled = false;
         observeBombers = false;
 
         bombersDone = true;
@@ -218,6 +252,10 @@ public class cameraController : MonoBehaviour
         camera2.enabled = false;
         camera3.enabled = false;
         camera4.enabled = false;
+        camera5.enabled = false;
+        camera6.enabled = false;
+        camera7.enabled = false;
+
         camera1Smooth.offset = new Vector3(offset.x + 50, offset.y + 30, offset.z + 100);
         camera1Smooth.target = midnight.transform;
         GetComponent<AudioSource>().PlayOneShot(midnightAudio);
@@ -232,6 +270,10 @@ public class cameraController : MonoBehaviour
         camera2.enabled = false;
         camera3.enabled = false;
         camera4.enabled = false;
+        camera5.enabled = false;
+        camera6.enabled = false;
+        camera7.enabled = false;
+
         camera1Smooth.offset = new Vector3(offset.x + 50, offset.y + 30, offset.z + 100); 
         camera1Smooth.target = starmade.transform;
         Debug.Log("starmade");
@@ -247,9 +289,12 @@ public class cameraController : MonoBehaviour
         camera3.enabled = false;
         camera4.enabled = false;
         camera5.enabled = true;
+        camera6.enabled = false;
+        camera7.enabled = false;
         Debug.Log("retreat");
         GetComponent<AudioSource>().PlayOneShot(retreatAudio);
-        yield return new WaitForSeconds(6);
+        retreat = true;
+        yield return new WaitForSeconds(10);
 
     }
 }
