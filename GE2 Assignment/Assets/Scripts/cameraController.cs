@@ -172,7 +172,7 @@ public class cameraController : MonoBehaviour
         camera3.enabled = false;
         camera5.enabled = false;
 
-        int pickCam = Random.Range(0, 2);
+        int pickCam = Random.Range(0, 3);
 
         switch (pickCam)
         {
@@ -256,7 +256,7 @@ public class cameraController : MonoBehaviour
         camera6.enabled = false;
         camera7.enabled = false;
 
-        camera1Smooth.offset = new Vector3(offset.x + 50, offset.y + 30, offset.z + 100);
+        camera1Smooth.offset = new Vector3(offset.x - 50, offset.y + 30, offset.z + 100);
         camera1Smooth.target = midnight.transform;
         GetComponent<AudioSource>().PlayOneShot(midnightAudio);
         Debug.Log("midnight");
@@ -274,7 +274,7 @@ public class cameraController : MonoBehaviour
         camera6.enabled = false;
         camera7.enabled = false;
 
-        camera1Smooth.offset = new Vector3(offset.x + 50, offset.y + 30, offset.z + 100); 
+        camera1Smooth.offset = new Vector3(offset.x - 50, offset.y + 30, offset.z + 100); 
         camera1Smooth.target = starmade.transform;
         Debug.Log("starmade");
         GetComponent<AudioSource>().PlayOneShot(starmadeAudio);
