@@ -14,11 +14,18 @@ class TargetState : State
         {
             case "blueTeamShip":
                 enemyShips = GameObject.FindGameObjectsWithTag("redTeamShip");
-                target = enemyShips[Random.Range(0, enemyShips.Length)];
+                if(enemyShips.Length != 0)
+                {
+                    target = enemyShips[Random.Range(0, enemyShips.Length)];
+                }
                 break;
             case "redTeamShip":
                 enemyShips = GameObject.FindGameObjectsWithTag("blueTeamShip");
-                target = enemyShips[Random.Range(0, enemyShips.Length)];
+                if(enemyShips.Length != 0)
+                {
+                    target = enemyShips[Random.Range(0, enemyShips.Length)];
+                }
+                
                 break;
         }
         
@@ -28,12 +35,16 @@ class TargetState : State
     }
     public override void Think()
     {
-        if (Vector3.Distance(
+        if(owner.GetComponent<shipController>().targetEnemy != null)
+        {
+            if (Vector3.Distance(
             owner.GetComponent<shipController>().targetEnemy.transform.position,
             owner.transform.position) < 1000)
-        {
-            owner.ChangeState(new PursueState());
+            {
+                owner.ChangeState(new PursueState());
+            }
         }
+        
     }
     public override void Exit()
     {

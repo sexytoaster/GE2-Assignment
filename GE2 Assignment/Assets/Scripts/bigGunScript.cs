@@ -28,28 +28,31 @@ public class bigGunScript : MonoBehaviour
         {
             aquireTarget();
         }
-        Vector3 directionVector = (enemy.transform.position - transform.position).normalized;
-        if (Vector3.Dot(directionVector, transform.forward) < firingArc)
+        if(enemy != null)
         {
-            aquireTarget();
-        }
+            Vector3 directionVector = (enemy.transform.position - transform.position).normalized;
+            if (Vector3.Dot(directionVector, transform.forward) < firingArc)
+            {
+                aquireTarget();
+            }
 
             if (Time.time - lastShot >= 60 / shotsPerMin)
-        {
-
-            //Vector3.forward
-            
-            //if target is in from of the gun, with a little bit of traverse limitation so it cannot shoot in hemispheres
-            if (Vector3.Dot(directionVector, transform.forward) > firingArc)
             {
-                GameObject instantiatedBullet = Instantiate(bullet, transform.position, transform.rotation);
 
-                rb = instantiatedBullet.GetComponent<Rigidbody>();
-                rb.AddForce(directionVector * speed);
-                //+= new Vector3(-speed, 0, 0);
-                lastShot = Time.time;
+                //Vector3.forward
+
+                //if target is in from of the gun, with a little bit of traverse limitation so it cannot shoot in hemispheres
+                if (Vector3.Dot(directionVector, transform.forward) > firingArc)
+                {
+                    GameObject instantiatedBullet = Instantiate(bullet, transform.position, transform.rotation);
+
+                    rb = instantiatedBullet.GetComponent<Rigidbody>();
+                    rb.AddForce(directionVector * speed);
+                    //+= new Vector3(-speed, 0, 0);
+                    lastShot = Time.time;
+                }
+
             }
-            
         }
         
     }
@@ -66,6 +69,11 @@ public class bigGunScript : MonoBehaviour
         }
         lastShot = Time.time;
         lastShot -= (Random.Range(0, 60 / shotsPerMin));
-        enemy = enemys[Random.Range(0, enemys.Length)];
+
+        if(enemys.Length != 0)
+        {
+            enemy = enemys[Random.Range(0, enemys.Length)];
+        }
+        
     }
 }
