@@ -95,6 +95,11 @@ public class shipController : MonoBehaviour
     public float hpPercent;
     public float bigLaserDamage = 5;
     public float smallLaserDamage = 1;
+    private bool damaged = false;
+    public GameObject explosionEffect;
+    public GameObject plasmaEffect;
+    public GameObject smokeEffect;
+    public GameObject fireEffect;
     // Start is called before the first frame update
     void Start()
     {
@@ -111,6 +116,14 @@ public class shipController : MonoBehaviour
         {
             GetComponent<StateMachine>().ChangeState(new TargetState());
         }
+        if (currentHP <= 30 && damaged == false)
+        {
+            Damage();
+        }
+        if (currentHP <= 0)
+        {
+            Explode();
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -123,6 +136,22 @@ public class shipController : MonoBehaviour
         {
             currentHP -= bigLaserDamage;
         }
+    }
+
+    public void Damage()
+    {
+        GameObject smoke = Instantiate(smokeEffect, transform.position, Quaternion.Euler(new Vector3(-90, -180,180)));
+        GameObject fire = Instantiate(fireEffect, transform.position, transform.rotation);
+        smoke.transform.parent = gameObject.transform;
+        fire.transform.parent = gameObject.transform;
+        damaged = true;
+    }
+
+    public void Explode()
+    {
+        Instantiate(explosionEffect, transform.position, transform.rotation);
+        Instantiate(plasmaEffect, transform.position, transform.rotation);
+        Destroy(gameObject);
     }
 
 }

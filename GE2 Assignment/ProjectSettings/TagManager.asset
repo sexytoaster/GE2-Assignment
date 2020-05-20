@@ -4,17 +4,17 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Shootable
+  - redTeamShip
   - redTeam
+  - blueTeamShip
   - blueTeam
-  - Leader
   - BomberLeaderBlue
+  - FighterLeaderRed
   - FighterLeaderBlue
   - BomberLeaderRed
-  - FighterLeaderRed
-  - blueTeamShip
-  - redTeamShip
-  - smallLaser
   - bigLaser
+  - smallLaser
   layers:
   - Default
   - TransparentFX
@@ -24,10 +24,10 @@ TagManager:
   - UI
   - 
   - 
-  - PostProcessing
-  - 
-  - 
-  - 
+  - Lighting
+  - Ground
+  - Postprocessing
+  - Ship
   - 
   - 
   - 
@@ -49,6 +49,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Fire
+    uniqueID: 3804908061
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
