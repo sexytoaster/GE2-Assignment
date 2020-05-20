@@ -36,11 +36,12 @@ public class cameraController : MonoBehaviour
     public AudioClip bombersEngageAudio;
     public AudioClip midnightAudio;
     public AudioClip starmadeAudio;
+    public AudioClip retreatAudio;
 
-    public bool observeFighters = false;
+    private bool observeFighters = false;
     private bool observeBombers = false;
 
-    public bool introStarted = false;
+    private bool introStarted = false;
     private bool introDone = false;
     private bool panDone = false;
     private bool bombersDone = false;
@@ -50,6 +51,8 @@ public class cameraController : MonoBehaviour
 
     private bool bomberEngaged = false;
     private bool widePan = false;
+
+    public bool retreat = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -123,12 +126,11 @@ public class cameraController : MonoBehaviour
 
         if (midnight == null && starmade == null)
         {
-            camera1.enabled = false;
-            camera2.enabled = false;
-            camera3.enabled = false;
-            camera4.enabled = true;
-            Debug.Log("sidepan 2");
+            
+            StartCoroutine("OrderRetreat");
         }
+
+        
         
     }
 
@@ -236,6 +238,18 @@ public class cameraController : MonoBehaviour
         GetComponent<AudioSource>().PlayOneShot(starmadeAudio);
         starmadeDone = true;
         yield return null;
+
+    }
+    IEnumerator OrderRetreat()
+    {
+        camera1.enabled = false;
+        camera2.enabled = false;
+        camera3.enabled = false;
+        camera4.enabled = false;
+        camera5.enabled = true;
+        Debug.Log("retreat");
+        GetComponent<AudioSource>().PlayOneShot(retreatAudio);
+        yield return new WaitForSeconds(6);
 
     }
 }
