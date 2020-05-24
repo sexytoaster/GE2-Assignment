@@ -26,6 +26,16 @@ needed.
 - [x] Ships exploding after taking enough damage
 - [ ] Orbital Defence Platforms engaing enemy ships
 
+## Instructions
+
+Load the files in unity, and hit play and it should play out similarly to how it is in the video. each time will be slightly different.
+
+## How it works
+
+It works by using the steering behaviors we covered in the module to steer the ships. It also implements flocking behaviors for the fighters and bombers, as implementing individual scripts for pursue etc on each fighter would have tanked performance. These flocking behaviors were implemented by following a tutorial series on youtube, which was nessecary as this was not covered in the module. This 9 part series can be found here https://www.youtube.com/watch?v=mjKINQigAE4. from this cohesion, obsticle avoidance and alignment scripts were also implemented, as well as a modified version of a stay in radius script which centres on te leader of each flock so they all say together easily. I created scripts for the guns, bombs, the ship controller, the squad controller, the individual states for the state machine, the cameras and the audio. The state machine main script was taken from the module also.  
+
+The ships are able to taget eachother because of the tags attatched to each side, one is blue team one is red team. Careful consideration was taken to limit the use of GetComponent calls to ensure the program runs efficiently. 
+
 ## Final Result
 
 In the end, most of what I aimed for was implemented and more. I went outside the coursework and implemented flocking behaviors for the fighters and bombers. I also implemented steering behaviors on all of the ships, gun turrets with firing arcs and also finite state machines on the bigger ships, and the leaders of the fighter and bomber squadrons. I also implemented a camera script that swapped between specific cameras as the story unfolded, and was not specifically timed but triggered by the events unfolding naturally in the scene. I would have liked to implement one more state, for retreating but unfortunately I did not get around to this as the camera and the audio consumed more time than I expected.
